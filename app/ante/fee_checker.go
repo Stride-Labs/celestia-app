@@ -81,10 +81,10 @@ func ValidateTxFee(ctx sdk.Context, tx sdk.Tx, paramKeeper params.Keeper) (sdk.C
 func verifyMinFee(fee math.Int, gas uint64, minGasPrice sdk.Dec, errMsg string) error {
 	// Determine the required fee by multiplying required minimum gas
 	// price by the gas limit, where fee = minGasPrice * gas.
-	minFee := minGasPrice.MulInt(sdk.NewIntFromUint64(gas)).Ceil()
-	if fee.LT(minFee.TruncateInt()) {
-		return errors.Wrapf(sdkerror.ErrInsufficientFee, "%s; got: %s required at least: %s", errMsg, fee, minFee)
-	}
+	// minFee := minGasPrice.MulInt(sdk.NewIntFromUint64(gas)).Ceil()
+	// if fee.LT(minFee.TruncateInt()) {
+	// 	return errors.Wrapf(sdkerror.ErrInsufficientFee, "%s; got: %s required at least: %s", errMsg, fee, minFee)
+	// }
 	return nil
 }
 
